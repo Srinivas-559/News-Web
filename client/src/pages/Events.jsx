@@ -14,6 +14,12 @@ const EventsPage = () => {
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [dialogOpen, setDialogOpen] = useState(false);
   const { user } = useAuth();
+    console.log("user", user);
+    if (user == null) {
+      return <div className="text-5xl text-center w-full h-full">
+        <h1 className="mt-[40vh] font-bold text-[#90939a] animate-pulse">Login with your university mail !</h1>
+      </div>
+    }
   const fetchEvents = async () => {
     try {
       const response = await fetch('http://localhost:5005/api/events/getEvents', {
@@ -92,7 +98,7 @@ const EventsPage = () => {
     : events?.filter(event => event.category === selectedCategory); // Use category for filtering
 
   return (
-    <div className="container mx-auto px-4">
+    <div className="container mx-auto px-4 mt-[7rem]">
       <FeaturedCarousel featuredEvents={featuredEvents?.length ? featuredEvents : []} />
       <Tabs activeTab={selectedCategory} tabs={categories} onTabClick={handleTabChange} />
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">

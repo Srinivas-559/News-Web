@@ -7,11 +7,12 @@ import HowWeGather from '../components/Home/HowWeGather';
 import Highlights from '../components/Home/Highlights';
 import ExtraSection from '../components/Home/ExtraSection';
 import Footer from '../components/Home/Footer';
-
+import { Suspense } from 'react';
+import { Canvas } from '@react-three/fiber';
 const HomePage = () => {
   return (
     <div className="min-h-screen bg-gray-100">
-      <HeroSection />
+              <HeroSection />
       <section id="our-mission-and-vision">
         <OurGoal />
       </section>

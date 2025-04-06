@@ -92,8 +92,8 @@ exports.login = async (req, res) => {
         const refreshToken = generateRefreshToken(user);
 
         // Set cookies for tokens
-        res.cookie('accessToken', accessToken, { httpOnly: true, sameSite: 'None', secure: true });
-        res.cookie('refreshToken', refreshToken, { httpOnly: true, sameSite: 'None', secure: true });
+        res.cookie('accessToken', accessToken, { httpOnly: true, sameSite: 'None', secure: true  , maxAge: 1 * 24 * 60 * 60 * 1000 });
+        res.cookie('refreshToken', refreshToken, { httpOnly: true, sameSite: 'None', secure: true  ,maxAge: 1 * 24 * 60 * 60 * 1000 });
 
         res.json({ message: 'Logged in successfully', user: userObject });
     } catch (error) {

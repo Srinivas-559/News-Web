@@ -7,6 +7,7 @@ const connectDB = require('./config/db');
 const authRoutes = require('./routes/authRoutes');
 const articleRoutes = require('./routes/articleRoutes');
 const eventRoutes = require('./routes/eventRoutes');
+const uploadRoutes = require("./routes/uploadRoutes");
 
 require('dotenv').config();
 connectDB();
@@ -33,6 +34,7 @@ app.use(cookieParser());
 app.use('/api/auth', authRoutes);
 app.use('/api/articles', articleRoutes);
 app.use('/api/events', eventRoutes);
+app.use("/api", uploadRoutes);
 
 // Create an HTTP server
 const server = http.createServer(app);

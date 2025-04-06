@@ -63,7 +63,7 @@ const ExternalNewsPage = () => {
   };
 
   return (
-    <div className="container mx-auto px-4">
+    <div className="container mx-auto mb-[5rem] px-4 mt-[5rem]">
       <CategoryNavigation
         categories={categories}
         selectedCategory={selectedCategory}

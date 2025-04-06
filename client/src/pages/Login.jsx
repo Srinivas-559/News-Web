@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { TextField, Button, CircularProgress, Box, IconButton, InputAdornment } from '@mui/material';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
   const { login } = useAuth();
@@ -117,7 +118,7 @@ const Login = () => {
         </Button>
 
         <div className="mt-4 text-center">
-          <p>Don't have an account? <a href="/register" className="text-blue-500 hover:underline">Register here</a></p>
+          <p>Don't have an account? <Link to="/register" className="text-blue-500 hover:underline">Register here</Link></p>
         </div>
       </form>
     </Box>

@@ -35,6 +35,35 @@ const CreateEvent = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+  const [file, setFile] = useState(null);
+  const handleFileChange = (e) => {
+    setFile(e.target.files[0]);
+  };
+  const handleUpload = async () => {
+    if (!file) {
+      setError("Please select an image to upload.");
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append("image", file);
+
+    try {
+      setLoading(true);
+      const { data } = await axios.post("http://localhost:5005/api/upload", formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+
+      setFormData((prevData) => ({ ...prevData, image: data.imageUrl }));
+      setSuccess("Image uploaded successfully!");
+      setError("");
+    } catch (error) {
+      setError("Failed to upload image.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -180,13 +209,13 @@ const CreateEvent = () => {
             value={formData.tags}
             onChange={handleInputChange}
           />
-          <TextField
-            fullWidth
-            label="Image URL"
-            name="image"
-            value={formData.image}
-            onChange={handleInputChange}
-          />
+          <Box>
+            <input type="file" accept="image/*" onChange={handleFileChange} />
+            <Button variant="contained" color="secondary" onClick={handleUpload} sx={{ ml: 2 }}>
+              Upload Image
+            </Button>
+          </Box>
+
           <FormControl fullWidth required>
             <InputLabel>Category</InputLabel>
             <Select

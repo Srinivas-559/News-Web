@@ -42,20 +42,13 @@ const ArticlesList = ({ articles, onReadMore }) => {
     }
   };
 
-  // ✅ Function to update likes globally
-  const handleLikeUpdate = (updatedArticle) => {
-    setVisibleArticles((prevArticles) =>
-      prevArticles.map((article) =>
-        article._id === updatedArticle._id ? updatedArticle : article
-      )
-    );
-  };
-
   return (
-    <div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div className="w-[100%]">
+      <div className=" w-[100%]  flex flex-wrap gap-6 mb-[5rem]">
         {visibleArticles.map((article, index) => (
-          <ArticleCard key={index} article={article} onReadMore={onReadMore} />
+          <div key={index} className="w-[100%]  sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1rem)]">
+            <ArticleCard article={article} onReadMore={onReadMore} />
+          </div>
         ))}
       </div>
       {hasMore && (

@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom'
 
 const OurGoal = () => {
   return (
@@ -37,9 +38,9 @@ const OurGoal = () => {
 
         {/* Call-to-Action */}
         <div className="mt-16">
-          <button className="px-6 py-3 text-lg font-semibold text-white bg-blue-500 rounded-md shadow-md hover:bg-blue-600 transition duration-300">
+          <Link to="/about" className="px-6 py-3 text-lg font-semibold text-white bg-blue-500 rounded-md shadow-md hover:bg-blue-600 transition duration-300">
             Learn More About Us
-          </button>
+          </Link>
         </div>
       </div>
     </div>
